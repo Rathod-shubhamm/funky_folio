@@ -518,18 +518,34 @@ canvas {
   width: var(--site-content-width);
   min-height: 100lvh;
   padding: 15vw 0 7vw;
-  overflow: hidden;
+  overflow: visible;
   border-bottom: var(--border-width) solid #000;
-  background: var(--color-secondary);
-  content-visibility: auto;
-  contain-intrinsic-size: 1000px;
+  --cyclist-width: clamp(300px, 33vw, 540px);
+  --cyclist-overlap: clamp(36px, 4vw, 58px);
+  --work-ground-height: clamp(220px, 32vw, 430px);
+  background:
+    linear-gradient(180deg, #4b86ff 0%, #3a74fb 42%, #2b47ff 100%);
+}
+
+.work-background {
+  position: absolute;
+  inset: auto 0 0;
+  height: var(--work-ground-height);
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(43, 71, 255, 0) 0%, rgba(43, 71, 255, 0.12) 14%, rgba(16, 38, 164, 0.34) 100%),
+    url("/assets/images/cyclist-bg.png");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: cover;
+  pointer-events: none;
 }
 
 .section-ghost-title {
   position: absolute;
   top: 11vh;
   right: var(--site-margin);
-  z-index: 0;
+  z-index: 1;
   margin: 0;
   color: #fff;
   font-family: var(--heading-font);
@@ -539,26 +555,33 @@ canvas {
   text-transform: uppercase;
 }
 
-.work-illustration {
+.cyclist-illustration {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 50vh;
-  z-index: 1; /* Sits beneath the WorkSlider (which is z-index: 2) */
+  right: calc(50% - min(39vw, 550px) - var(--cyclist-overlap));
+  bottom: clamp(10px, 2.2vw, 30px);
+  width: var(--cyclist-width);
+  height: auto;
+  max-width: none;
+  z-index: 20;
   pointer-events: none;
 }
 
-.work-illustration img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: bottom center;
+@media (max-width: 768px) {
+  .work-section {
+    --cyclist-width: clamp(190px, 40vw, 260px);
+    --cyclist-overlap: clamp(18px, 3vw, 28px);
+    --work-ground-height: clamp(180px, 42vw, 280px);
+  }
+
+  .cyclist-illustration {
+    right: calc(50% - 45vw - var(--cyclist-overlap));
+    bottom: 8px;
+  }
 }
 
 .portfolio-carousel {
   position: relative;
-  z-index: 2;
+  z-index: 10;
   display: grid;
   gap: var(--content-margin);
   width: min(70vw, 1180px);
@@ -566,6 +589,8 @@ canvas {
 }
 
 .portfolio-card {
+  position: relative;
+  z-index: 10;
   display: flex;
   min-height: min(62vh, 690px);
   border: var(--border-width) solid #000;
@@ -586,7 +611,7 @@ canvas {
 /* Root container */
 .ws-root {
   position: relative;
-  z-index: 2;
+  z-index: 10;
   outline: none;
   padding-bottom: 48px; /* room for controls */
 }

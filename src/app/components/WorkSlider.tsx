@@ -48,11 +48,9 @@ interface Props {
 }
 
 /* ─── constants ─────────────────────────────────────────────────────── */
-const CARD_WIDTH_VW = 78;   // % of viewport taken by active card
-const PEEK_VW       = 7;    // visible amount of adjacent cards (vw)
-const GAP_PX        = 24;
-const SNAP_FRICTION = 0.062; // spring friction (0–1, lower = snappier)
-const DRAG_FACTOR   = 1.18;  // how much mouse movement maps to slider movement
+const CARD_WIDTH_VW = 78; // % of viewport taken by active card
+const GAP_PX = 24;
+const DRAG_FACTOR = 1.18; // how much mouse movement maps to slider movement
 
 /* ─── helpers ───────────────────────────────────────────────────────── */
 function lerp(a: number, b: number, t: number) {
@@ -68,6 +66,7 @@ export default function WorkSlider({ projects }: Props) {
 
   /* current slide index */
   const [active, setActive] = useState(0);
+  const [dragging, setDragging] = useState(false);
 
   /* raw pixel offset (animated via RAF) */
   const offsetRef   = useRef(0);           // current rendered px
@@ -150,6 +149,7 @@ export default function WorkSlider({ projects }: Props) {
   /* ─── pointer handlers ─────────────────────────────────────────── */
   const onPointerDown = useCallback((e: ReactPointerEvent<HTMLDivElement>) => {
     isDragging.current = true;
+    setDragging(true);
     dragStart.current  = { x: e.clientX, offset: offsetRef.current, time: performance.now() };
     lastX.current      = e.clientX;
     lastTime.current   = performance.now();
@@ -175,6 +175,7 @@ export default function WorkSlider({ projects }: Props) {
   const onPointerUp = useCallback(() => {
     if (!isDragging.current) return;
     isDragging.current = false;
+    setDragging(false);
 
     /* fling: project forward based on velocity */
     const flingDistance = velRef.current * 120;       // px
@@ -215,7 +216,7 @@ export default function WorkSlider({ projects }: Props) {
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
         onPointerCancel={onPointerUp}
-        data-dragging={isDragging.current ? "true" : undefined}
+        data-dragging={dragging ? "true" : undefined}
       >
         <div className="ws-track" ref={trackRef}>
           {projects.map((project) => (

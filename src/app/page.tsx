@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+import Image from "next/image";
 import HeroAvatar from "./components/HeroAvatar";
 import WorkSlider from "./components/WorkSlider";
 
@@ -177,9 +179,16 @@ export default function Home() {
         <div className="section-divider" />
 
         <section className="work-section" id="work" aria-label="Work">
-          <div className="work-illustration" aria-hidden="true">
-            <img src="/assets/images/cyclist-bg.png" alt="Cyclist background" />
-          </div>
+          <div className="work-background" aria-hidden="true" />
+          <Image
+            src="/cyclist.png"
+            alt=""
+            className="cyclist-illustration"
+            aria-hidden="true"
+            width={1672}
+            height={941}
+            sizes="(max-width: 768px) 40vw, 33vw"
+          />
           <h2 className="section-ghost-title">Work</h2>
 
           <WorkSlider projects={work} />
