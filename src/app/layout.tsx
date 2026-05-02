@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Alumni_Sans, Gasoek_One, Caveat } from "next/font/google";
+import { Inter, Alumni_Sans } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -12,20 +12,9 @@ const alumniSans = Alumni_Sans({
   subsets: ["latin"],
 });
 
-const gasoekOne = Gasoek_One({
-  weight: "400",
-  variable: "--font-gasoek",
-  subsets: ["latin"],
-});
-
-const caveat = Caveat({
-  variable: "--font-caveat",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "Neo-Brutalist Portfolio",
-  description: "A bold, playful portfolio",
+  title: "Shubham Rathod | Full-Stack Developer & AI Engineer",
+  description: "A bold, playful full-stack and AI engineering portfolio.",
 };
 
 export default function RootLayout({
@@ -36,7 +25,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${alumniSans.variable} ${gasoekOne.variable} ${caveat.variable} h-full antialiased`}
+      className={`${inter.variable} ${alumniSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
