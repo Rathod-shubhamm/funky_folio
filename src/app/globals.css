@@ -539,41 +539,21 @@ canvas {
   text-transform: uppercase;
 }
 
-.langbar {
+.work-illustration {
   position: absolute;
-  right: -9vw;
-  bottom: -2vw;
-  width: 60vw;
-  height: 28vw;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50vh;
+  z-index: 1; /* Sits beneath the WorkSlider (which is z-index: 2) */
   pointer-events: none;
 }
 
-.langbar span {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 33%;
-  border: var(--border-width) solid #000;
-  border-radius: 999px 0 0 999px;
-  background: #9af2ff;
-  transform-origin: right center;
-}
-
-.langbar span:nth-child(1) {
-  top: 0;
-  transform: rotate(-7deg);
-}
-
-.langbar span:nth-child(2) {
-  top: 32%;
-  background: #ffae00;
-  transform: rotate(2deg);
-}
-
-.langbar span:nth-child(3) {
-  top: 64%;
-  background: #f04d3c;
-  transform: rotate(9deg);
+.work-illustration img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom center;
 }
 
 .portfolio-carousel {
@@ -597,6 +577,155 @@ canvas {
 
 .portfolio-card:not(:first-child) {
   margin-top: calc(var(--content-margin) * -0.4);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   WorkSlider — premium peek carousel
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Root container */
+.ws-root {
+  position: relative;
+  z-index: 2;
+  outline: none;
+  padding-bottom: 48px; /* room for controls */
+}
+
+/* Overflow mask */
+.ws-viewport {
+  overflow: hidden;
+  width: 100%;
+  /* cursor hint */
+  cursor: grab;
+}
+
+.ws-viewport:active,
+.ws-viewport[data-dragging="true"] {
+  cursor: grabbing;
+}
+
+/* The sliding track — positioned by JS via transform */
+.ws-track {
+  display: flex;
+  gap: 24px;
+  /* critical: no CSS transition here — RAF handles it */
+  will-change: transform;
+  /* left-pad so first card is centered with peek on left */
+  padding-left: calc((100vw - 78vw) / 2);
+  padding-right: calc((100vw - 78vw) / 2);
+}
+
+/* ── card overrides for slider context ── */
+.ws-card {
+  flex: 0 0 78vw;
+  max-width: 1100px;
+  min-height: min(62vh, 660px);
+  /* scale + opacity driven by RAF */
+  transform-origin: center center;
+  will-change: transform, opacity;
+  transition: box-shadow 300ms ease;
+}
+
+.ws-card:hover {
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* Parallax inner — content shifts subtly opposite to drag */
+.ws-card-inner {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+/* ── arrow controls ── */
+.ws-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 28px;
+}
+
+.ws-arrow {
+  position: absolute;
+  top: 50%;
+  margin-top: -38px; /* Offset for half height + bottom controls space */
+  z-index: 20;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border: var(--border-width) solid #000;
+  border-radius: var(--radius-xs);
+  background: #fff; /* Give it a background so it stands out */
+  font-size: 22px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 160ms ease, color 160ms ease, transform 160ms ease, opacity 160ms ease;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.ws-arrow-left {
+  left: max(16px, 3vw);
+}
+
+.ws-arrow-right {
+  right: max(16px, 3vw);
+}
+
+.ws-arrow:hover:not(:disabled) {
+  background: #000;
+  color: #fff;
+  transform: scale(1.08);
+}
+
+.ws-arrow:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.ws-arrow:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── dot indicators ── */
+.ws-dots {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.ws-dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid #000;
+  background: transparent;
+  cursor: pointer;
+  transition: background 200ms ease, transform 200ms ease, width 250ms ease;
+}
+
+.ws-dot.is-active {
+  background: #000;
+  width: 28px;
+  border-radius: 999px;
+  transform: none;
+}
+
+/* ── progress bar ── */
+.ws-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: var(--progress, 0%);
+  background: #000;
+  transition: width 400ms cubic-bezier(0.77, 0, 0.18, 1);
+  pointer-events: none;
 }
 
 .portfolio-card-left {

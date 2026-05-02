@@ -1,5 +1,5 @@
-import type { CSSProperties } from "react";
 import HeroAvatar from "./components/HeroAvatar";
+import WorkSlider from "./components/WorkSlider";
 
 const work = [
   {
@@ -26,7 +26,7 @@ const work = [
     tags: ["Web", "Product", "Cloud", "API"],
     color: "#9af2ff",
   },
-];
+] as const;
 
 const services = [
   {
@@ -106,30 +106,6 @@ function Logo() {
   );
 }
 
-function ProjectVisual({ code, color }: { code: string; color: string }) {
-  return (
-    <div className="project-visual" style={{ "--accent": color } as CSSProperties}>
-      <div className="visual-grid">
-        <span />
-        <span />
-        <span />
-        <span />
-      </div>
-      <div className="device device-phone">
-        <span className="device-notch" />
-        <span className="device-block is-wide" />
-        <span className="device-block" />
-        <span className="device-block is-short" />
-      </div>
-      <div className="device device-card">
-        <span className="device-code">{code}</span>
-        <span className="device-line" />
-        <span className="device-line small" />
-      </div>
-      <div className="pixel-strip" />
-    </div>
-  );
-}
 
 export default function Home() {
   return (
@@ -201,48 +177,12 @@ export default function Home() {
         <div className="section-divider" />
 
         <section className="work-section" id="work" aria-label="Work">
+          <div className="work-illustration" aria-hidden="true">
+            <img src="/assets/images/cyclist-bg.png" alt="Cyclist background" />
+          </div>
           <h2 className="section-ghost-title">Work</h2>
-          <div className="langbar" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-          </div>
 
-          <div className="portfolio-carousel">
-            {work.map((project, index) => (
-              <article
-                className="portfolio-card"
-                key={project.code}
-                style={{ "--card-color": project.color } as CSSProperties}
-              >
-                <div className="portfolio-card-left">
-                  <div className="portfolio-code">{project.code}</div>
-                  <div className="client-text">
-                    <p>PROJECT</p>
-                    <h3>{project.title}</h3>
-                  </div>
-                  <div className="work-markers" aria-label={`${project.title} services`}>
-                    {project.tags.map((tag) => (
-                      <span className="marker" key={tag}>
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="portfolio-footer">
-                    <a className="outline-button" href="https://github.com/Rathod-shubhamm">
-                      View work
-                    </a>
-                    <span>
-                      {index + 1}/{work.length}
-                    </span>
-                  </div>
-                </div>
-                <a className="portfolio-card-right" href="https://github.com/Rathod-shubhamm">
-                  <ProjectVisual code={project.code} color={project.color} />
-                </a>
-              </article>
-            ))}
-          </div>
+          <WorkSlider projects={work} />
         </section>
 
         <section className="service-section" id="services" aria-label="Services">
