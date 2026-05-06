@@ -990,7 +990,10 @@ canvas {
   gap: var(--site-margin);
   width: var(--site-content-width);
   padding: calc(var(--site-margin) * 1.45) 0 calc(var(--site-margin) * 1.8);
-  overflow: hidden;
+  /* clip instead of hidden: doesn't create a scroll container, lets IO work cleanly.
+     Cards start off-screen right; overflow-x:clip hides them until they slide in. */
+  overflow-x: clip;
+  overflow-y: hidden;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 18%),
     linear-gradient(180deg, #3f66ff 0%, #2b47ff 68%, #2440ef 100%);
@@ -1272,6 +1275,63 @@ canvas {
   line-height: 0.8;
   text-transform: uppercase;
   white-space: nowrap;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Services scroll-driven card reveal
+   ─────────────────────────────────────────────────────────────────────────────
+   Strategy: IntersectionObserver (hook) sets data-cards-revealed="true" on
+   .service-cards when the section enters the viewport while scrolling down.
+   This drives a CSS transition — no JS reads/writes layout, no jank.
+
+   The rope (.service-rope) lives OUTSIDE .service-cards so it is never
+   translated and always appears in its final position.
+
+   Stagger: each .service-card carries --card-index (0…n-1) via inline style.
+   The delay is: base-delay + index × stagger-step.
+   ──────────────────────────────────────────────────────────────────────────── */
+
+/* ── Tuning variables ───────────────────────────────────────────────────── */
+:root {
+  /* How far right each card starts — increase for a more dramatic sweep */
+  --sc-start-x: 58vw;
+  /* Stagger between consecutive cards (seconds) */
+  --sc-stagger: 0.14s;
+  /* Duration of each card's transition */
+  --sc-duration: 0.75s;
+  /* Initial opacity of offscreen cards (0.9 = almost fully opaque, feels physical) */
+  --sc-opacity-start: 0.88;
+  /* Easing: power4-out feel — aggressive deceleration, slight spring settle */
+  --sc-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── INITIAL STATE — cards start off-screen to the right ─────────────── */
+.service-card {
+  will-change: transform, opacity;
+  transform: translateX(var(--sc-start-x));
+  opacity: var(--sc-opacity-start);
+}
+
+/* ── REVEALED STATE — hook sets data-cards-revealed on .service-cards ── */
+.service-cards[data-cards-revealed="true"] .service-card {
+  transform: translateX(0);
+  opacity: 1;
+  transition:
+    transform var(--sc-duration) var(--sc-ease),
+    opacity calc(var(--sc-duration) * 0.85) ease-out;
+  /* Stagger delay: base 0.05 s + card-index × stagger step */
+  transition-delay: calc(0.05s + var(--card-index, 0) * var(--sc-stagger));
+}
+
+/* ── REDUCED MOTION — skip the slide, show cards immediately ─────────── */
+@media (prefers-reduced-motion: reduce) {
+  .service-card {
+    transform: translateX(0) !important;
+    opacity: 1 !important;
+    will-change: auto;
+    transition: none !important;
+    transition-delay: 0s !important;
+  }
 }
 
 .about-section {
