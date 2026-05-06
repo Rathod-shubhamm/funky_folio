@@ -1,6 +1,6 @@
-import type { CSSProperties } from "react";
 import Image from "next/image";
 import HeroAvatar from "./components/HeroAvatar";
+import ServicesSection from "./components/ServicesSection";
 import WorkSlider from "./components/WorkSlider";
 
 const work = [
@@ -194,48 +194,7 @@ export default function Home() {
           <WorkSlider projects={work} />
         </section>
 
-        <section className="service-section" id="services" aria-label="Services">
-          <div className="service-header">
-            <h2>Services</h2>
-            <p>
-              I can take a product from zero to launch: interface design, production
-              development, AI workflow architecture, and the connective tissue between them.
-              <a href="#contact"> Get in touch</a>.
-            </p>
-          </div>
-
-          <div className="service-scroller">
-            <div className="connector-line" aria-hidden="true" />
-            {services.map((service) => (
-              <article className="service-card" key={service.code}>
-                <div className="service-hole" style={{ "--hole": service.color } as CSSProperties}>
-                  <span>{service.code}</span>
-                  <i />
-                  <small>{service.date}</small>
-                </div>
-                <div className="service-top">
-                  <div className="service-code">{service.code}</div>
-                  <div className="service-skills">
-                    {service.skills.map((skill) => (
-                      <span className="marker" key={skill}>
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <div className="service-bottom">
-                  <p>SERVICE</p>
-                  <h3>{service.title}</h3>
-                  <div className="service-route">
-                    {service.route.map((stop) => (
-                      <span key={stop}>{stop}</span>
-                    ))}
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
+        <ServicesSection services={services} />
 
         <section className="about-section" id="about" aria-label="About">
           <div className="stadium" aria-hidden="true">
