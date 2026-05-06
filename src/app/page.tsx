@@ -180,18 +180,11 @@ export default function Home() {
 
         <section className="work-section" id="work" aria-label="Work">
           <div className="work-background" aria-hidden="true" />
-          <Image
-            src="/cyclist.png"
-            alt=""
-            className="cyclist-illustration"
-            aria-hidden="true"
-            width={1672}
-            height={941}
-            sizes="(max-width: 768px) 40vw, 33vw"
-          />
           <h2 className="section-ghost-title">Work</h2>
 
           <WorkSlider projects={work} />
+
+          <div className="work-foreground" aria-hidden="true" />
         </section>
 
         <ServicesSection services={services} />
