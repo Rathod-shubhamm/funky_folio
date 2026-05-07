@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@600&display=swap');
 
 @theme {
   --font-body: var(--font-inter);
@@ -32,7 +33,8 @@
   --headline-xxl: clamp(140px, 25vw, 520px);
   --body-font: var(--font-inter), sans-serif;
   --heading-font: var(--font-alumni), sans-serif;
-  --alt-font: var(--font-alumni), Impact, Haettenschweiler, "Arial Narrow", sans-serif;
+  --alt-font: 'Anton', Impact, Haettenschweiler, "Arial Narrow", sans-serif;
+  --signature-font: 'Caveat', cursive;
 }
 
 * {
@@ -264,10 +266,47 @@ canvas {
   position: absolute;
   inset: 0;
   overflow: hidden;
-  background:
-    radial-gradient(circle at 76% 26%, rgba(154, 242, 255, 0.36) 0 7%, transparent 7.2%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 38%),
-    var(--color-secondary);
+  background: var(--color-secondary);
+}
+
+.hero-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.6;
+  animation: float-blob 12s infinite alternate ease-in-out;
+  pointer-events: none;
+}
+
+.blob-1 {
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(circle, rgba(154, 242, 255, 0.4), transparent 60%);
+  top: -10%;
+  left: -10%;
+}
+
+.blob-2 {
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(circle, rgba(255, 174, 0, 0.25), transparent 60%);
+  bottom: -10%;
+  right: 10%;
+  animation-delay: -4s;
+}
+
+.blob-3 {
+  width: 35vw;
+  height: 35vw;
+  background: radial-gradient(circle, rgba(148, 153, 255, 0.35), transparent 60%);
+  top: 30%;
+  left: 40%;
+  animation-delay: -8s;
+}
+
+@keyframes float-blob {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(5vw, 5vh) scale(1.1); }
 }
 
 .orbital {
@@ -479,32 +518,77 @@ canvas {
 .hero-box {
   position: relative;
   z-index: 2;
-  width: min(42vw, 620px);
-  border: var(--border-width) solid #000;
-  border-radius: var(--radius-xs);
-  background: rgba(255, 255, 255, 0.14);
+  width: min(50vw, 720px);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  border-radius: clamp(16px, 2vw, 32px);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 
+    inset 0 0 40px rgba(255, 255, 255, 0.15),
+    0 24px 48px rgba(0, 0, 0, 0.2);
+  padding: clamp(32px, 4vw, 56px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 2vw, 32px);
 }
 
 .hero-heading {
-  padding: var(--content-margin-sm) var(--content-margin);
-  border-bottom: 2px dashed #000;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 .hero-heading h1 {
   margin: 0;
   font-family: var(--alt-font);
-  font-size: clamp(86px, 11vw, 220px);
+  font-size: clamp(120px, 16vw, 260px);
   font-weight: 400;
-  line-height: 1.05;
+  line-height: 0.85;
   text-transform: uppercase;
+  letter-spacing: -0.04em;
+  color: var(--color-primary);
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.hero-signature {
+  font-family: var(--signature-font);
+  font-size: clamp(32px, 4vw, 64px);
+  color: var(--color-primary);
+  transform: rotate(-3deg) translateY(-10px);
+  align-self: flex-end;
+  position: relative;
+  padding-right: clamp(10px, 2vw, 40px);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hero-signature::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--color-primary);
+  border-radius: 4px;
+  transform: rotate(2deg);
+}
+
+.hero-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.3);
+  margin: clamp(8px, 1vw, 16px) 0;
 }
 
 .hero-box p {
   margin: 0;
-  padding: var(--content-margin);
-  font-size: var(--text-xxs);
-  line-height: 1.35;
+  font-size: clamp(16px, 1.35vw, 24px);
+  line-height: 1.5;
+  font-weight: 500;
   text-wrap: pretty;
+  max-width: 85%;
+  color: var(--color-primary);
 }
 
 .section-divider {

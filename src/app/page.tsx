@@ -156,6 +156,9 @@ export default function Home() {
       <main id="main-content" className="site-content">
         <section className="hero-section" aria-label="Hero">
           <div className="hero-animation" aria-hidden="true">
+            <div className="hero-blob blob-1" />
+            <div className="hero-blob blob-2" />
+            <div className="hero-blob blob-3" />
             <div className="orbital orbital-one" />
             <div className="orbital orbital-two" />
             <div className="butterfly">
@@ -171,8 +174,10 @@ export default function Home() {
           <HeroAvatar />
           <div className="hero-box">
             <div className="hero-heading">
-              <h1>Hey!</h1>
+              <h1>HEY!</h1>
+              <div className="hero-signature">I&apos;m Shubham</div>
             </div>
+            <div className="hero-divider" aria-hidden="true" />
             <p>
               You&apos;ve arrived at the portfolio of <b>Shubham Rathod</b>, a full-stack
               developer and AI engineer building fast web products, automation systems, and
