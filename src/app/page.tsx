@@ -2,31 +2,36 @@ import Image from "next/image";
 import HeroAvatar from "./components/HeroAvatar";
 import ServicesSection from "./components/ServicesSection";
 import WorkSlider from "./components/WorkSlider";
+import FieldOpsSection from "./components/FieldOpsSection";
 
 const work = [
   {
-    code: "ECO",
-    title: "Ecosystem AI",
-    tags: ["Next.js", "Python", "N8N", "Agentic"],
+    code: "AGT",
+    title: "Agentic Systems",
+    tags: ["Python", "Orchestration", "LLMs", "RAG"],
     color: "#f04d3c",
+    href: "/work/agentic-systems",
   },
   {
-    code: "PIT",
-    title: "PitchPulse AI",
-    tags: ["React", "FastAPI", "LLM", "Analytics"],
+    code: "CNT",
+    title: "AI Content Infrastructure",
+    tags: ["Automation", "Pipelines", "Generation"],
     color: "#9499ff",
+    href: "/work/ai-content-infrastructure",
   },
   {
-    code: "MKT",
-    title: "MarketBrain AI",
-    tags: ["UI/UX", "Automation", "Data", "SaaS"],
+    code: "DAT",
+    title: "Data Intelligence Systems",
+    tags: ["ETL", "SQL", "Analytics", "BigQuery"],
     color: "#ffae00",
+    href: "/work/data-intelligence-systems",
   },
   {
-    code: "BLK",
-    title: "BlinkCare",
-    tags: ["Web", "Product", "Cloud", "API"],
-    color: "#9af2ff",
+    code: "VIS",
+    title: "Computer Vision",
+    tags: ["YOLOv8", "OpenCV", "Inference"],
+    color: "#8aff70",
+    href: "/work/computer-vision",
   },
 ] as const;
 
@@ -188,6 +193,8 @@ export default function Home() {
         </section>
 
         <ServicesSection services={services} />
+
+        <FieldOpsSection />
 
         <section className="about-section" id="about" aria-label="About">
           <div className="stadium" aria-hidden="true">

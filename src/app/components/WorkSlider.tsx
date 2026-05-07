@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import {
   useRef,
   useState,
@@ -15,6 +16,7 @@ export interface SliderProject {
   title: string;
   tags: readonly string[];
   color: string;
+  href: string;
 }
 
 /* ─── ProjectVisual (self-contained, no server boundary) ─────────── */
@@ -240,31 +242,27 @@ export default function WorkSlider({ projects }: Props) {
                     ))}
                   </div>
                   <div className="portfolio-footer">
-                    <a
+                    <Link
                       className="outline-button"
-                      href="https://github.com/Rathod-shubhamm"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href={project.href}
                       // prevent card drag being intercepted as link click
                       onPointerDown={(e) => e.stopPropagation()}
                     >
                       View work
-                    </a>
+                    </Link>
                     <span>
                       {projects.indexOf(project) + 1}/{projects.length}
                     </span>
                   </div>
                 </div>
 
-                <a
+                <Link
                   className="portfolio-card-right"
-                  href="https://github.com/Rathod-shubhamm"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={project.href}
                   onPointerDown={(e) => e.stopPropagation()}
                 >
                   <ProjectVisual code={project.code} color={project.color} />
-                </a>
+                </Link>
               </div>
             </article>
           ))}
