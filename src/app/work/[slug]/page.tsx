@@ -12,25 +12,25 @@ const WORK_DATA = {
     title: "AGENTIC SYSTEMS",
     code: "AGT",
     color: "#f04d3c",
-    description: "Autonomous orchestration systems and AI workflow infrastructure.",
-    overview: "We engineer multi-agent orchestration layers that transform static LLM endpoints into active, self-correcting workflow systems. These systems handle context retrieval, tool execution, and state management autonomously, drastically reducing human-in-the-loop dependencies for complex operations.",
+    description: "Enterprise automation and autonomous multi-agent orchestration infrastructure.",
+    overview: "We engineered an entire organization-wide automation system powered by OpenClaw. The architecture relies on a 4-node autonomous workforce: a Main Coordinator, Coder, Browser-enabled Researcher, and Writer. The main orchestrator processes voice and text inputs, actively delegating and tracking progress across sub-agents. C-level executives can frictionlessly push tasks to any employee's Jira board, pull Slack summaries, and receive automated daily/weekly operational reports directly via Telegram.",
     metrics: [
-      { label: "Manual Overhead Reduction", value: "70%" },
-      { label: "Workflows Automated", value: "15+" },
+      { label: "Autonomous Agents", value: "4-Node" },
+      { label: "Platform Integrations", value: "6+" },
       { label: "Orchestration", value: "Multi-Agent" },
     ],
     features: [
-      "Multi-agent Jira automation system",
-      "Voice/Text → Structured task pipelines",
-      "Slack-integrated orchestration systems",
-      "DBAS business research + validation platform",
-      "RAG systems with hybrid search",
-      "Prompt orchestration workflows"
+      "Enterprise OpenClaw automation",
+      "Voice-to-Jira task delegation pipelines",
+      "Autonomous Coder, Researcher & Writer agents",
+      "Slack/Gmail/GitHub cross-platform integration",
+      "Automated Telegram progress reporting",
+      "Slack channel/DM intelligent summarization"
     ],
     tech: {
-      AI: ["LangChain", "CrewAI", "LlamaIndex", "GPT-4"],
+      AI: ["OpenClaw", "LangChain", "CrewAI", "GPT-4"],
       Backend: ["Python", "FastAPI", "Celery", "Redis"],
-      Infra: ["Docker", "Kubernetes", "AWS ECS", "Terraform"]
+      Integrations: ["Jira", "Slack", "Telegram", "GitHub", "Gmail"]
     },
     architectureUrl: "/placeholder-architecture.svg", // We can use CSS patterns if no image
     dashboardStyle: "terminal"
@@ -39,25 +39,25 @@ const WORK_DATA = {
     title: "AI CONTENT INFRASTRUCTURE",
     code: "CNT",
     color: "#9499ff",
-    description: "Large-scale AI content generation and publishing systems.",
-    overview: "A highly resilient content assembly line. We built scalable pipelines that ingest raw signals, orchestrate multiple generative models for copy and visual assets, and handle automated validation, scheduling, and multi-platform distribution without manual intervention.",
+    description: "Omnichannel social automation and AI-driven content scheduling systems.",
+    overview: "We architected 'AI Content Factory', an end-to-end multi-platform publishing engine with frictionless zero-setup onboarding. Users simply log in—no developer accounts or complex API keys required—to simultaneously blast content across Facebook, Twitter, Instagram, Reddit, and YouTube. It empowers users to generate AI imagery or upload custom media, auto-generate SEO-optimized captions with targeted hashtags, while a robust calendar scheduler orchestrates cross-platform drops dynamically.",
     metrics: [
-      { label: "Posts / Month", value: "10,000+" },
-      { label: "Active Accounts", value: "100+" },
-      { label: "System Uptime", value: "99.2%" },
+      { label: "Platforms Synced", value: "5 Networks" },
+      { label: "Onboarding", value: "Zero-Config" },
+      { label: "Asset Pipeline", value: "AI + Custom" },
     ],
     features: [
-      "Multi-platform AI posting tool",
-      "One-click publishing pipelines",
-      "AI caption generation via LLMs",
-      "Image generation workflows (Stable Diffusion)",
-      "Scheduler systems with timezone awareness",
-      "Validation and fallback systems"
+      "Zero-config OAuth login (No Dev APIs needed)",
+      "Omnichannel posting (FB, X, IG, Reddit, YT)",
+      "Automated SEO-optimized captions & hashtags",
+      "Dynamic calendar-based scheduling",
+      "AI image generation pipelines",
+      "Custom media & video upload bypass"
     ],
     tech: {
-      AI: ["Stable Diffusion", "Midjourney API", "Claude 3", "GPT-4V"],
+      AI: ["Stable Diffusion", "GPT-4V", "DALL-E 3"],
       Backend: ["Node.js", "Express", "RabbitMQ", "PostgreSQL"],
-      Frontend: ["React", "Next.js", "TailwindCSS", "Zustand"]
+      Integrations: ["Meta Graph API", "X API", "YouTube API", "Reddit API"]
     },
     dashboardStyle: "dashboard"
   },
