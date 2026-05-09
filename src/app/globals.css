@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@600&display=swap');
 
 @theme {
   --font-body: var(--font-inter);
@@ -33,8 +32,8 @@
   --headline-xxl: clamp(140px, 25vw, 520px);
   --body-font: var(--font-inter), sans-serif;
   --heading-font: var(--font-alumni), sans-serif;
-  --alt-font: 'Anton', Impact, Haettenschweiler, "Arial Narrow", sans-serif;
-  --signature-font: 'Caveat', cursive;
+  --alt-font: var(--font-montserrat), Impact, Haettenschweiler, "Arial Narrow", sans-serif;
+  --signature-font: var(--font-caveat), cursive;
 }
 
 * {
@@ -552,23 +551,36 @@ canvas {
 }
 
 .hero-signature {
-  font-family: var(--signature-font);
-  font-size: clamp(32px, 4vw, 64px);
+  font-size: clamp(28px, 3.5vw, 56px);
   color: var(--color-primary);
-  transform: rotate(-3deg) translateY(-10px);
-  align-self: flex-end;
+  align-self: flex-start;
   position: relative;
-  padding-right: clamp(10px, 2vw, 40px);
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-top: -10px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
 }
 
-.hero-signature::after {
+.hero-signature-plain {
+  font-family: var(--body-font);
+  font-weight: 500;
+  font-size: 0.8em;
+}
+
+.hero-signature-cursive {
+  font-family: var(--signature-font);
+  transform: rotate(-4deg);
+  position: relative;
+  display: inline-block;
+}
+
+.hero-signature-cursive::after {
   content: "";
   position: absolute;
-  bottom: 0;
+  bottom: 4px;
   left: 0;
   width: 100%;
-  height: 3px;
+  height: 2px;
   background: var(--color-primary);
   border-radius: 4px;
   transform: rotate(2deg);
@@ -576,19 +588,111 @@ canvas {
 
 .hero-divider {
   width: 100%;
-  height: 1px;
-  background: rgba(0, 0, 0, 0.3);
-  margin: clamp(8px, 1vw, 16px) 0;
+  border-top: 1px dashed rgba(0, 0, 0, 0.4);
+  margin: clamp(12px, 1.5vw, 24px) 0;
 }
 
 .hero-box p {
   margin: 0;
-  font-size: clamp(16px, 1.35vw, 24px);
-  line-height: 1.5;
+  font-size: clamp(15px, 1.25vw, 22px);
+  line-height: 1.6;
   font-weight: 500;
   text-wrap: pretty;
-  max-width: 85%;
+  max-width: 90%;
   color: var(--color-primary);
+  margin-bottom: 12px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: auto;
+}
+
+.hero-btn-primary {
+  background: #000;
+  color: #fff;
+  border: 1px solid #000;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-family: var(--body-font);
+  font-weight: 800;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.hero-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.hero-btn-secondary {
+  background: transparent;
+  color: #000;
+  border: 1px solid rgba(0,0,0,0.3);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-family: var(--body-font);
+  font-weight: 800;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hero-btn-secondary:hover {
+  background: rgba(0,0,0,0.05);
+  border-color: rgba(0,0,0,0.6);
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 4vh;
+  left: var(--site-margin);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.6);
+  z-index: 10;
+}
+
+.scroll-indicator .mouse {
+  width: 20px;
+  height: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.scroll-indicator .wheel {
+  width: 2px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 2px;
+  margin-top: 6px;
+  animation: scroll-wheel 1.5s infinite ease;
+}
+
+.scroll-indicator .arrow-down {
+  animation: scroll-wheel 1.5s infinite ease;
+}
+
+@keyframes scroll-wheel {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(8px); opacity: 0; }
 }
 
 .section-divider {

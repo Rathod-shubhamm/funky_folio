@@ -11,13 +11,15 @@ const work = [
     tags: ["Python", "Orchestration", "LLMs", "RAG"],
     color: "#f04d3c",
     href: "/work/agentic-systems",
+    image: "/agt-preview.png",
   },
   {
     code: "CNT",
-    title: "AI Content Infrastructure",
+    title: "AI Content Infra",
     tags: ["Automation", "Pipelines", "Generation"],
     color: "#9499ff",
     href: "/work/ai-content-infrastructure",
+    image: "/cnt-preview.png",
   },
   {
     code: "DAT",
@@ -32,6 +34,7 @@ const work = [
     tags: ["YOLOv8", "OpenCV", "Inference"],
     color: "#8aff70",
     href: "/work/computer-vision",
+    video: "homepagevideo.mp4", // Add your video file to public/vis-demo.mp4
   },
 ] as const;
 
@@ -175,14 +178,27 @@ export default function Home() {
           <div className="hero-box">
             <div className="hero-heading">
               <h1>HEY!</h1>
-              <div className="hero-signature">I&apos;m Shubham</div>
+              <div className="hero-signature">
+                <span className="hero-signature-plain">I&apos;m </span>
+                <span className="hero-signature-cursive">Shubham</span>
+              </div>
             </div>
             <div className="hero-divider" aria-hidden="true" />
             <p>
-              You&apos;ve arrived at the portfolio of <b>Shubham Rathod</b>, a full-stack
-              developer and AI engineer building fast web products, automation systems, and
-              practical agentic workflows.
+              A full stack developer & UI/UX enthusiast crafting modern, high-performance websites and applications.
             </p>
+            <div className="hero-actions">
+              <a href="#work" className="hero-btn-primary">
+                VIEW MY WORK <span className="arrow">→</span>
+              </a>
+            </div>
+          </div>
+          <div className="scroll-indicator">
+            <span>SCROLL TO EXPLORE</span>
+            <div className="mouse">
+              <span className="wheel"></span>
+            </div>
+            <span className="arrow-down">↓</span>
           </div>
         </section>
 

@@ -17,10 +17,22 @@ export interface SliderProject {
   tags: readonly string[];
   color: string;
   href: string;
+  image?: string;
+  video?: string;
 }
 
 /* ─── ProjectVisual (self-contained, no server boundary) ─────────── */
-function ProjectVisual({ code, color }: { code: string; color: string }) {
+function ProjectVisual({ 
+  code, 
+  color, 
+  image, 
+  video 
+}: { 
+  code: string; 
+  color: string; 
+  image?: string; 
+  video?: string;
+}) {
   return (
     <div className="project-visual" style={{ "--accent": color } as CSSProperties}>
       <div className="visual-grid">
@@ -29,17 +41,38 @@ function ProjectVisual({ code, color }: { code: string; color: string }) {
         <span />
         <span />
       </div>
-      <div className="device device-phone">
-        <span className="device-notch" />
-        <span className="device-block is-wide" />
-        <span className="device-block" />
-        <span className="device-block is-short" />
-      </div>
-      <div className="device device-card">
-        <span className="device-code">{code}</span>
-        <span className="device-line" />
-        <span className="device-line small" />
-      </div>
+      
+      {video ? (
+        <div style={{ position: 'absolute', inset: 0, zIndex: 10, overflow: 'hidden' }}>
+          <video 
+            src={video} 
+            autoPlay 
+            loop 
+            muted 
+            playsInline 
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+          />
+        </div>
+      ) : image ? (
+        <div style={{ position: 'absolute', inset: 0, zIndex: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2vw' }}>
+          <img src={image} alt={code} style={{ width: '100%', height: '100%', objectFit: 'contain', filter: 'drop-shadow(0 20px 30px rgba(0,0,0,0.3))' }} />
+        </div>
+      ) : (
+        <>
+          <div className="device device-phone">
+            <span className="device-notch" />
+            <span className="device-block is-wide" />
+            <span className="device-block" />
+            <span className="device-block is-short" />
+          </div>
+          <div className="device device-card">
+            <span className="device-code">{code}</span>
+            <span className="device-line" />
+            <span className="device-line small" />
+          </div>
+        </>
+      )}
+
       <div className="pixel-strip" />
     </div>
   );
@@ -261,7 +294,12 @@ export default function WorkSlider({ projects }: Props) {
                   href={project.href}
                   onPointerDown={(e) => e.stopPropagation()}
                 >
-                  <ProjectVisual code={project.code} color={project.color} />
+                  <ProjectVisual 
+                    code={project.code} 
+                    color={project.color} 
+                    image={project.image} 
+                    video={project.video}
+                  />
                 </Link>
               </div>
             </article>

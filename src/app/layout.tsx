@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Alumni_Sans } from "next/font/google";
+import { Inter, Alumni_Sans, Montserrat, Caveat } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -9,6 +9,18 @@ const inter = Inter({
 
 const alumniSans = Alumni_Sans({
   variable: "--font-alumni",
+  subsets: ["latin"],
+});
+
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
+  weight: ["900"],
+  subsets: ["latin"],
+});
+
+const caveat = Caveat({
+  variable: "--font-caveat",
+  weight: ["600"],
   subsets: ["latin"],
 });
 
@@ -25,7 +37,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${alumniSans.variable} h-full antialiased`}
+      className={`${inter.variable} ${alumniSans.variable} ${montserrat.variable} ${caveat.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
