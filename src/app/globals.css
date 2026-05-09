@@ -186,8 +186,8 @@ canvas {
   transition: transform 240ms cubic-bezier(0.76, 0, 0.24, 1);
 }
 
-.site-nav a span + span,
-.header-cta span + span {
+.site-nav a span+span,
+.header-cta span+span {
   position: absolute;
   left: 0;
   top: 100%;
@@ -199,8 +199,8 @@ canvas {
   transform: translateY(-100%);
 }
 
-.site-nav a:hover span + span,
-.header-cta:hover span + span {
+.site-nav a:hover span+span,
+.header-cta:hover span+span {
   transform: translateY(-100%);
 }
 
@@ -304,8 +304,13 @@ canvas {
 }
 
 @keyframes float-blob {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(5vw, 5vh) scale(1.1); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate(5vw, 5vh) scale(1.1);
+  }
 }
 
 .orbital {
@@ -491,10 +496,8 @@ canvas {
   background:
     radial-gradient(circle at 36% 28%, rgba(255, 255, 255, 0.9) 0 8%, transparent 9%),
     radial-gradient(circle, #0b0705 0 42%, #3a1a0d 43% 76%, #120905 77% 100%);
-  transform: translate(
-    calc(var(--look-x) * 46%),
-    calc(var(--look-y) * 16%)
-  );
+  transform: translate(calc(var(--look-x) * 46%),
+      calc(var(--look-y) * 16%));
   transition: transform 150ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -523,7 +526,7 @@ canvas {
   background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  box-shadow: 
+  box-shadow:
     inset 0 0 40px rgba(255, 255, 255, 0.15),
     0 24px 48px rgba(0, 0, 0, 0.2);
   padding: clamp(32px, 4vw, 56px);
@@ -623,18 +626,18 @@ canvas {
   gap: 8px;
   text-decoration: none;
   transition: all 0.2s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .hero-btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .hero-btn-secondary {
   background: transparent;
   color: #000;
-  border: 1px solid rgba(0,0,0,0.3);
+  border: 1px solid rgba(0, 0, 0, 0.3);
   padding: 12px 24px;
   border-radius: 8px;
   font-family: var(--body-font);
@@ -648,8 +651,8 @@ canvas {
 }
 
 .hero-btn-secondary:hover {
-  background: rgba(0,0,0,0.05);
-  border-color: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.6);
 }
 
 .scroll-indicator {
@@ -691,8 +694,15 @@ canvas {
 }
 
 @keyframes scroll-wheel {
-  0% { transform: translateY(0); opacity: 1; }
-  100% { transform: translateY(8px); opacity: 0; }
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(8px);
+    opacity: 0;
+  }
 }
 
 .section-divider {
@@ -722,7 +732,8 @@ canvas {
 .work-foreground {
   position: absolute;
   inset: 0;
-  z-index: 20; /* Overlaps the slider (z-index 10) */
+  z-index: 20;
+  /* Overlaps the slider (z-index 10) */
   background: url("/cyclist-fg.png") center/cover no-repeat;
   pointer-events: none;
 }
@@ -778,7 +789,9 @@ canvas {
   position: relative;
   z-index: 10;
   display: flex;
-  min-height: min(62vh, 690px);
+  width: 65vw;
+  height: 545px;
+  margin: 0 auto;
   border: var(--border-width) solid #000;
   border-radius: var(--radius-xs);
   overflow: hidden;
@@ -799,7 +812,8 @@ canvas {
   position: relative;
   z-index: 10;
   outline: none;
-  padding-bottom: 48px; /* room for controls */
+  padding-bottom: 48px;
+  /* room for controls */
 }
 
 /* Overflow mask */
@@ -822,15 +836,15 @@ canvas {
   /* critical: no CSS transition here — RAF handles it */
   will-change: transform;
   /* left-pad so first card is centered with peek on left */
-  padding-left: calc((100vw - 78vw) / 2);
-  padding-right: calc((100vw - 78vw) / 2);
+  padding-left: calc((100vw - 65vw) / 2);
+  padding-right: calc((100vw - 65vw) / 2);
 }
 
 /* ── card overrides for slider context ── */
 .ws-card {
-  flex: 0 0 78vw;
-  max-width: 1100px;
-  min-height: min(62vh, 660px);
+  flex: 0 0 65vw;
+  max-width: 1070px;
+  height: 545px;
   /* scale + opacity driven by RAF */
   transform-origin: center center;
   will-change: transform, opacity;
@@ -861,7 +875,8 @@ canvas {
 .ws-arrow {
   position: absolute;
   top: 50%;
-  margin-top: -38px; /* Offset for half height + bottom controls space */
+  margin-top: -38px;
+  /* Offset for half height + bottom controls space */
   z-index: 20;
   display: inline-flex;
   align-items: center;
@@ -870,13 +885,14 @@ canvas {
   height: 52px;
   border: var(--border-width) solid #000;
   border-radius: var(--radius-xs);
-  background: #fff; /* Give it a background so it stands out */
+  background: #fff;
+  /* Give it a background so it stands out */
   font-size: 22px;
   font-weight: 800;
   cursor: pointer;
   transition: background 160ms ease, color 160ms ease, transform 160ms ease, opacity 160ms ease;
   flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .ws-arrow-left {
@@ -942,13 +958,22 @@ canvas {
 .portfolio-card-left {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   width: 45%;
   background: var(--card-color);
 }
 
+.portfolio-content-block {
+  height: 375px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .portfolio-code {
-  padding: 0 var(--content-margin) calc(var(--content-margin) / 1.75);
+  height: 170px;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--content-margin);
   background: #000;
   color: #fff;
   font-family: var(--heading-font);
@@ -1269,7 +1294,8 @@ canvas {
   left: var(--site-margin);
   right: var(--site-margin);
   top: clamp(76px, 8vw, 106px);
-  z-index: 3;
+  z-index: 1;
+  /* Sits behind the cards */
   height: clamp(10px, 1vw, 14px);
   border: var(--border-width) solid #000;
   border-radius: 999px;
@@ -1277,12 +1303,14 @@ canvas {
   box-shadow:
     0 5px 0 rgba(0, 0, 0, 0.45),
     0 0 0 2px rgba(255, 255, 255, 0.12);
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.2));
 }
 
 .service-cards {
   display: flex !important;
   flex-wrap: nowrap !important;
-  gap: clamp(48px, 4vw, 64px) !important; /* Increased gap for luxury breather */
+  gap: clamp(48px, 4vw, 64px) !important;
+  /* Increased gap for luxury breather */
   align-items: start;
   overflow-x: auto;
   overscroll-behavior-x: contain;
@@ -1294,7 +1322,7 @@ canvas {
   margin-right: calc(-1 * var(--site-margin));
   padding-left: var(--site-margin);
   padding-right: var(--site-margin);
-  
+
   /* Dragging UX */
   cursor: grab;
   user-select: none;
@@ -1313,8 +1341,10 @@ canvas {
   position: relative;
   display: flex;
   flex-direction: column;
-  flex: 0 0 auto !important; /* Force no shrinking */
-  min-width: clamp(380px, 30vw, 460px) !important; /* Larger cards */
+  flex: 0 0 auto !important;
+  /* Force no shrinking */
+  min-width: clamp(380px, 30vw, 460px) !important;
+  /* Larger cards */
   width: clamp(380px, 30vw, 460px);
   min-height: clamp(650px, 70vh, 800px);
   padding-top: clamp(28px, 2.8vw, 42px);
@@ -1327,7 +1357,7 @@ canvas {
   position: absolute;
   top: clamp(80px, 8vw, 110px);
   left: 50%;
-  z-index: 1;
+  z-index: 0;
   width: var(--border-width);
   height: clamp(34px, 4vw, 54px);
   background: rgba(0, 0, 0, 0.92);
@@ -1349,35 +1379,40 @@ canvas {
 
 .service-card-tag {
   position: relative;
-  z-index: 4;
-  display: grid;
-  place-items: center;
-  gap: 5px;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   width: clamp(92px, 8vw, 112px);
-  min-height: clamp(102px, 9vw, 118px);
+  height: clamp(102px, 9vw, 118px);
   margin: 0 auto;
-  padding: 12px 10px 10px;
+  padding: 12px 10px;
   border: var(--border-width) solid #000;
   border-radius: 22px;
   background: var(--service-accent);
   box-shadow: 0 8px 0 rgba(0, 0, 0, 0.16);
   text-align: center;
-}
-
-.service-card-tag-code {
-  font-family: var(--heading-font);
-  font-size: clamp(30px, 2.6vw, 40px);
-  font-weight: 800;
-  line-height: 0.8;
-  text-transform: uppercase;
+  /* Punch a hole through the tag background */
+  -webkit-mask-image: radial-gradient(circle 12px at 50% 50%, transparent 100%, black 100%);
+  mask-image: radial-gradient(circle 12px at 50% 50%, transparent 100%, black 100%);
 }
 
 .service-card-tag-dot {
-  width: 20px;
-  height: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
   border: var(--border-width) solid #000;
   border-radius: 50%;
-  background: var(--color-secondary);
+  background: transparent;
+  z-index: 10;
+  /* Inset shadow inside the hole for depth */
+  box-shadow:
+    inset 0 4px 8px rgba(0, 0, 0, 0.4),
+    0 0 0 2px rgba(255, 255, 255, 0.1);
 }
 
 .service-card-tag-date {
@@ -1953,10 +1988,12 @@ canvas {
 }
 
 @keyframes floaty {
+
   0%,
   100% {
     transform: translateY(0) rotate(-12deg);
   }
+
   50% {
     transform: translateY(-28px) rotate(-4deg);
   }
@@ -1966,6 +2003,7 @@ canvas {
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(-50%);
   }
@@ -2212,6 +2250,7 @@ canvas {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -2228,7 +2267,8 @@ canvas {
 
 .field-ops-section {
   position: relative;
-  background: var(--color-secondary); /* Electric Blue */
+  background: var(--color-secondary);
+  /* Electric Blue */
   min-height: 100vh;
   padding: calc(var(--header-height) + var(--site-margin)) 0;
   border-bottom: var(--border-width) solid #000;
@@ -2279,6 +2319,7 @@ canvas {
   user-select: none;
   -webkit-user-drag: none;
 }
+
 .ops-cards:active {
   cursor: grabbing;
 }
@@ -2304,7 +2345,7 @@ canvas {
   font-family: var(--font-inter);
   font-weight: 800;
   z-index: 2;
-  box-shadow: 0 4px 0 rgba(0,0,0,0.3);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3);
 }
 
 .ops-card-tag-dot {
@@ -2323,14 +2364,14 @@ canvas {
   grid-template-columns: clamp(300px, 25vw, 400px) 1fr 200px;
   color: #fff;
   overflow: hidden;
-  box-shadow: 12px 12px 0 rgba(0,0,0,0.5);
+  box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.5);
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease;
   filter: brightness(0.9);
 }
 
 .ops-card:hover .ops-panel {
   transform: translateY(-8px) scale(1.01);
-  box-shadow: 20px 20px 0 rgba(0,0,0,0.6);
+  box-shadow: 20px 20px 0 rgba(0, 0, 0, 0.6);
   filter: brightness(1.05);
 }
 
@@ -2355,11 +2396,13 @@ canvas {
   margin-bottom: clamp(24px, 3vw, 40px);
 }
 
-.ops-role, .ops-work {
+.ops-role,
+.ops-work {
   margin-bottom: 32px;
 }
 
-.ops-role small, .ops-work small {
+.ops-role small,
+.ops-work small {
   display: block;
   font-size: 12px;
   color: #666;
@@ -2387,6 +2430,7 @@ canvas {
   padding-left: 16px;
   color: #ddd;
 }
+
 .ops-work li::before {
   content: "»";
   position: absolute;
@@ -2447,19 +2491,22 @@ canvas {
   inset: 0;
   background: radial-gradient(circle at center, #1a0a00 0%, #050200 100%);
 }
+
 .blink-grid {
   position: absolute;
   inset: 0;
   background-image: linear-gradient(rgba(255, 69, 0, 0.08) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(255, 69, 0, 0.08) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(255, 69, 0, 0.08) 1px, transparent 1px);
   background-size: 40px 40px;
 }
+
 .route-svg {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
 }
+
 .route-svg path {
   fill: none;
   stroke: var(--op-accent);
@@ -2468,6 +2515,7 @@ canvas {
   animation: dash 30s linear infinite;
   filter: drop-shadow(0 0 8px var(--op-accent));
 }
+
 .blink-node {
   fill: var(--op-accent);
   filter: drop-shadow(0 0 12px var(--op-accent));
@@ -2479,12 +2527,14 @@ canvas {
   inset: 0;
   background: #000d08;
 }
+
 .zoned-grid {
   position: absolute;
   inset: 0;
   background-image: radial-gradient(rgba(0, 255, 136, 0.15) 1px, transparent 1px);
   background-size: 20px 20px;
 }
+
 .zoned-overlay {
   position: absolute;
   inset: 0;
@@ -2492,6 +2542,7 @@ canvas {
   align-items: center;
   justify-content: center;
 }
+
 .geo-poly {
   fill: rgba(0, 255, 136, 0.05);
   stroke: rgba(0, 255, 136, 0.6);
@@ -2508,12 +2559,21 @@ canvas {
 .pulse {
   animation: pulseAnim 3s infinite alternate;
 }
+
 .pulse-fast {
   animation: pulseAnim 1.5s infinite alternate;
 }
+
 @keyframes pulseAnim {
-  0% { opacity: 0.3; transform: scale(0.9); }
-  100% { opacity: 1; transform: scale(1.1); }
+  0% {
+    opacity: 0.3;
+    transform: scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
 }
 
 @media (max-width: 1024px) {
@@ -2521,8 +2581,19 @@ canvas {
     grid-template-columns: 1fr;
     grid-template-rows: auto 300px auto;
   }
-  .ops-details { border-right: none; border-bottom: var(--border-width) solid #333; }
-  .ops-metrics { border-left: none; border-top: var(--border-width) solid #333; }
-  .metrics-grid { flex-direction: row; flex-wrap: wrap; }
-}
 
+  .ops-details {
+    border-right: none;
+    border-bottom: var(--border-width) solid #333;
+  }
+
+  .ops-metrics {
+    border-left: none;
+    border-top: var(--border-width) solid #333;
+  }
+
+  .metrics-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}

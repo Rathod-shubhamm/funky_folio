@@ -83,7 +83,7 @@ interface Props {
 }
 
 /* ─── constants ─────────────────────────────────────────────────────── */
-const CARD_WIDTH_VW = 78; // % of viewport taken by active card
+const CARD_WIDTH_VW = 65; // % of viewport taken by active card
 const GAP_PX = 24;
 const DRAG_FACTOR = 1.18; // how much mouse movement maps to slider movement
 
@@ -120,7 +120,8 @@ export default function WorkSlider({ projects }: Props) {
   /* ── compute card width ── */
   const measure = useCallback(() => {
     const vw = window.innerWidth;
-    cardWidthRef.current = vw * (CARD_WIDTH_VW / 100) + GAP_PX;
+    const cardWidth = Math.min(vw * 0.65, 1070);
+    cardWidthRef.current = cardWidth + GAP_PX;
   }, []);
 
   useEffect(() => {
@@ -265,27 +266,29 @@ export default function WorkSlider({ projects }: Props) {
                 {/* LEFT */}
                 <div className="portfolio-card-left">
                   <div className="portfolio-code">{project.code}</div>
-                  <div className="client-text">
-                    <p>PROJECT</p>
-                    <h3>{project.title}</h3>
-                  </div>
-                  <div className="work-markers" aria-label={`${project.title} tech`}>
-                    {project.tags.map((tag) => (
-                      <span className="marker" key={tag}>{tag}</span>
-                    ))}
-                  </div>
-                  <div className="portfolio-footer">
-                    <Link
-                      className="outline-button"
-                      href={project.href}
-                      // prevent card drag being intercepted as link click
-                      onPointerDown={(e) => e.stopPropagation()}
-                    >
-                      View work
-                    </Link>
-                    <span>
-                      {projects.indexOf(project) + 1}/{projects.length}
-                    </span>
+                  <div className="portfolio-content-block">
+                    <div className="client-text">
+                      <p>PROJECT</p>
+                      <h3>{project.title}</h3>
+                    </div>
+                    <div className="work-markers" aria-label={`${project.title} tech`}>
+                      {project.tags.map((tag) => (
+                        <span className="marker" key={tag}>{tag}</span>
+                      ))}
+                    </div>
+                    <div className="portfolio-footer">
+                      <Link
+                        className="outline-button"
+                        href={project.href}
+                        // prevent card drag being intercepted as link click
+                        onPointerDown={(e) => e.stopPropagation()}
+                      >
+                        View work
+                      </Link>
+                      <span>
+                        {projects.indexOf(project) + 1}/{projects.length}
+                      </span>
+                    </div>
                   </div>
                 </div>
 

@@ -87,10 +87,21 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
       targetScroll = Math.max(0, Math.min(targetScroll - dragVelocity * 15, el.scrollWidth - el.clientWidth));
     };
 
+    const onWheel = (e: WheelEvent) => {
+      // Only intercept if scrolling horizontally or with shift key
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY) || e.shiftKey) {
+        e.preventDefault();
+        const delta = e.deltaX || e.deltaY;
+        targetScroll = Math.max(0, Math.min(targetScroll + delta, el.scrollWidth - el.clientWidth));
+      }
+    };
+
     const render = () => {
-      // If we are artificially scrolling via drag, apply GSAP-like inertia
-      if (isDragging || Math.abs(targetScroll - currentScroll) > 0.5) {
-        currentScroll += (targetScroll - currentScroll) * 0.08;
+      // Damping: 0.1 for smooth liquid feel
+      const damping = isDragging ? 0.2 : 0.075;
+      
+      if (Math.abs(targetScroll - currentScroll) > 0.1) {
+        currentScroll += (targetScroll - currentScroll) * damping;
         if (Math.round(el.scrollLeft) !== Math.round(currentScroll)) {
           el.scrollLeft = currentScroll;
         }
@@ -98,17 +109,16 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
         currentScroll = targetScroll;
       }
 
-      // Compute velocity based on delta (works for both native swipe & drag)
+      // Compute velocity for tilting
       const frameVel = targetScroll - currentScroll;
       velocity = velocity * 0.8 + frameVel * 0.2;
 
-      // 1. Rope Parallax (moves backwards slightly relative to cards)
+      // 1. Rope Parallax
       rope.style.transform = `translateX(${-currentScroll * 0.12}px)`;
 
       // 2. Card Tilting
       if (canTilt) {
-        // Cap tilt between -1.5deg and 1.5deg
-        const tilt = Math.max(-1.5, Math.min(1.5, velocity * 0.015));
+        const tilt = Math.max(-2, Math.min(2, velocity * 0.02));
         el.style.setProperty("--tilt", `${tilt}deg`);
       }
 
@@ -120,6 +130,7 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
     el.addEventListener("pointermove", onPointerMove);
     el.addEventListener("pointerup", onPointerUp);
     el.addEventListener("pointercancel", onPointerUp);
+    el.addEventListener("wheel", onWheel, { passive: false });
     rafId = requestAnimationFrame(render);
 
     return () => {
@@ -128,6 +139,7 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
       el.removeEventListener("pointermove", onPointerMove);
       el.removeEventListener("pointerup", onPointerUp);
       el.removeEventListener("pointercancel", onPointerUp);
+      el.removeEventListener("wheel", onWheel);
       cancelAnimationFrame(rafId);
       clearTimeout(timer);
     };
