@@ -83,22 +83,23 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
       isDragging = false;
       el.releasePointerCapture(e.pointerId);
 
-      // Add momentum on release (multiplied for weight)
-      targetScroll = Math.max(0, Math.min(targetScroll - dragVelocity * 15, el.scrollWidth - el.clientWidth));
+      // Add momentum on release (increased multiplier for less friction)
+      targetScroll = Math.max(0, Math.min(targetScroll - dragVelocity * 28, el.scrollWidth - el.clientWidth));
     };
 
     const onWheel = (e: WheelEvent) => {
       // Only intercept if scrolling horizontally or with shift key
       if (Math.abs(e.deltaX) > Math.abs(e.deltaY) || e.shiftKey) {
         e.preventDefault();
-        const delta = e.deltaX || e.deltaY;
+        // Boost wheel sensitivity (1.5x)
+        const delta = (e.deltaX || e.deltaY) * 1.5;
         targetScroll = Math.max(0, Math.min(targetScroll + delta, el.scrollWidth - el.clientWidth));
       }
     };
 
     const render = () => {
-      // Damping: 0.1 for smooth liquid feel
-      const damping = isDragging ? 0.2 : 0.075;
+      // Damping: Higher = less friction/snappier
+      const damping = isDragging ? 0.25 : 0.12;
       
       if (Math.abs(targetScroll - currentScroll) > 0.1) {
         currentScroll += (targetScroll - currentScroll) * damping;

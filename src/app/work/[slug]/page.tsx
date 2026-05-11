@@ -68,7 +68,7 @@ const WORK_DATA = {
     code: "DAT",
     color: "#ffae00",
     description: "Data lineage, analytics infrastructure, ETL, and intelligence systems.",
-    overview: "Robust foundational data systems built for scale. By structuring raw telemetry into structured, queryable graphs, we enable real-time anomaly detection and predictive scoring. The system features self-healing ETL pipelines and massive SQL processing capability.",
+    overview: "Built a data lineage application that extracts queries from 5+ platforms including Snowflake, BigQuery, SQL Server, Oracle, and Airflow as an orchestrator. The system features an AI-powered lineage builder where an LLM acts as a robust fallback, constructing lineage paths even when inbound and outbound sources are ambiguous or poorly defined.",
     metrics: [
       { label: "SQL Transformations", value: "10,000+" },
       { label: "Production Data", value: "2TB+" },
@@ -84,8 +84,8 @@ const WORK_DATA = {
     ],
     tech: {
       Data: ["Snowflake", "BigQuery", "dbt", "Airflow"],
-      Backend: ["Python", "Go", "Redis", "Kafka"],
-      Infra: ["GCP", "Kubernetes", "Prometheus", "Grafana"]
+      Backend: ["Python", "SQL", "Redis", "Kafka"],
+      Infra: ["GCP", "Docker", "AWS", "Fallback-llm"]
     },
     dashboardStyle: "pipeline",
     heroImage: "/dat-hero.png"
