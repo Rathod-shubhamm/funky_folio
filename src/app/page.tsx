@@ -58,7 +58,7 @@ const services = [
   {
     code: "LLM",
     date: "08-20-23",
-    title: "LLM Deployment",
+    title: "LLM Applications",
     skills: ["Fine-Tuning", "vLLM", "TensorRT", "Quantization", "API Design", "Scalability"],
     route: ["MOD", "OPT", "DEP"],
     color: "#8aff70",
