@@ -38,6 +38,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${inter.variable} ${alumniSans.variable} ${montserrat.variable} ${caveat.variable} h-full antialiased`}
+      data-scroll-behavior="smooth"
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

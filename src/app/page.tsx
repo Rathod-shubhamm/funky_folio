@@ -34,7 +34,7 @@ const work = [
     tags: ["YOLOv8", "OpenCV", "Inference"],
     color: "#8aff70",
     href: "/work/computer-vision",
-    video: "homepagevideo.mp4", // Add your video file to public/vis-demo.mp4
+    video: "/homepagevideo.mp4", // Add your video file to public/vis-demo.mp4
   },
 ] as const;
 
@@ -81,18 +81,7 @@ const services = [
   },
 ];
 
-const roster = [
-  "Apexneural Pvt Ltd",
-  "BlinkCare",
-  "VIT Bhopal",
-  "EcoSystem AI",
-  "PitchPulse AI",
-  "MarketBrain AI",
-  "Lumina AI",
-  "Autonomous Workflows",
-  "Content Intelligence",
-  "Product Labs",
-];
+
 
 const awards = [
   "AI Product Launch x4",
@@ -141,16 +130,16 @@ export default function Home() {
             <span>About</span>
             <span aria-hidden="true">About</span>
           </a>
-          <a href="#contact">
-            <span>Contact</span>
-            <span aria-hidden="true">Contact</span>
+          <a href="https://www.linkedin.com/in/shubham-rathod-821a01202/" target="_blank" rel="noopener noreferrer">
+            <span>LinkedIn</span>
+            <span aria-hidden="true">LinkedIn</span>
           </a>
-          <a href="#lab">
-            <span>Lab</span>
-            <span aria-hidden="true">Lab</span>
+          <a href="https://drive.google.com/file/d/1wo48W9xWu-rQBMni_WO7nhp1nlKN8_KB/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+            <span>Resume</span>
+            <span aria-hidden="true">Resume</span>
           </a>
         </nav>
-        <a className="header-cta" href="mailto:shubhamrathod1619@gmail.com">
+        <a className="header-cta" href="#contact">
           <span>Let&apos;s talk</span>
           <span aria-hidden="true">Fun stuff</span>
         </a>
@@ -193,13 +182,7 @@ export default function Home() {
               </a>
             </div>
           </div>
-          <div className="scroll-indicator">
-            <span>SCROLL TO EXPLORE</span>
-            <div className="mouse">
-              <span className="wheel"></span>
-            </div>
-            <span className="arrow-down">↓</span>
-          </div>
+
         </section>
 
         <div className="section-divider" />
@@ -244,14 +227,7 @@ export default function Home() {
                   deployment, I focus on turning complex workflows into clear software.
                 </p>
               </div>
-              <div className="roster hide-mobile">
-                <h3>Roster</h3>
-                <ul>
-                  {roster.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
+
             </div>
             <div className="scoreboard">
               <div className="score">
@@ -282,17 +258,10 @@ export default function Home() {
             </svg>
             <p>Ready to play?</p>
           </div>
-          <div className="guitar" aria-hidden="true">
-            <span className="guitar-body" />
-            <span className="guitar-neck" />
-            <span className="guitar-head" />
-            <span className="string string-one" />
-            <span className="string string-two" />
-            <span className="string string-three" />
-          </div>
+
           <div className="contact-links">
             <a href="mailto:shubhamrathod1619@gmail.com">shubhamrathod1619@gmail.com</a>
-            <a href="tel:+919000000000">+91 90000 00000</a>
+            <a href="tel:+918319450574">+91 8319450574</a>
             <a href="https://github.com/Rathod-shubhamm">View GitHub</a>
           </div>
         </section>
