@@ -2591,3 +2591,113 @@ canvas {
     flex-wrap: wrap;
   }
 }
+
+/* ── MOBILE OPTIMIZATIONS ── */
+@media (max-width: 768px) {
+  :root {
+    --site-margin: 20px;
+    --content-margin: 16px;
+  }
+
+  .site-header {
+    height: 70px;
+  }
+
+  .hero-section {
+    padding-top: 100px;
+    padding-bottom: 60px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-text h1 {
+    font-size: clamp(60px, 15vw, 90px);
+    text-align: center;
+  }
+
+  .hero-text .hero-cta {
+    justify-content: center;
+  }
+
+  .hero-animation {
+    opacity: 0.4;
+  }
+
+  /* Work Slider Mobile Layout */
+  .portfolio-card {
+    flex-direction: column !important;
+    height: auto !important;
+    width: 85vw !important;
+  }
+
+  .portfolio-card-left, 
+  .portfolio-card-right {
+    width: 100% !important;
+  }
+
+  .portfolio-code {
+    height: 100px !important;
+    font-size: 80px !important;
+    justify-content: center;
+  }
+
+  .portfolio-content-block {
+    height: auto !important;
+    min-height: 380px;
+    padding-bottom: 30px;
+  }
+
+  .portfolio-card-right {
+    height: 200px !important;
+    border-left: none !important;
+    border-top: var(--border-width) solid #000;
+  }
+
+  /* Services Mobile */
+  .service-card {
+    min-width: 85vw !important;
+    width: 85vw !important;
+    height: 700px !important; /* Slightly shorter for mobile screens */
+  }
+
+  .service-card-panel h3 {
+    font-size: 80px !important;
+  }
+
+  .service-card-bottom-row strong {
+    font-size: 38px !important;
+  }
+
+  /* About Mobile */
+  .about-top {
+    flex-direction: column !important;
+    gap: 30px !important;
+  }
+
+  .scoreboard {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 15px !important;
+  }
+
+  .score {
+    padding: 15px !important;
+  }
+
+  .score-val {
+    font-size: 40px !important;
+  }
+
+  .about-card {
+    padding: 30px 20px 0 !important;
+    width: 95vw !important;
+  }
+
+  .pitch {
+    width: 250vw !important; /* Scale up background for better mobile fit */
+  }
+
+  /* Footer Mobile */
+  .contact-section h2 {
+    font-size: 80px !important;
+  }
+}

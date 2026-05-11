@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Alumni_Sans, Montserrat, Caveat } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -40,7 +41,10 @@ export default function RootLayout({
       className={`${inter.variable} ${alumniSans.variable} ${montserrat.variable} ${caveat.variable} h-full antialiased`}
       data-scroll-behavior="smooth"
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

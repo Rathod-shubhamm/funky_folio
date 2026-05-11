@@ -120,7 +120,8 @@ export default function WorkSlider({ projects }: Props) {
   /* ── compute card width ── */
   const measure = useCallback(() => {
     const vw = window.innerWidth;
-    const cardWidth = Math.min(vw * 0.65, 1070);
+    // On mobile, use 85% width, on desktop use 65% with a max cap
+    const cardWidth = vw < 768 ? vw * 0.85 : Math.min(vw * 0.65, 1070);
     cardWidthRef.current = cardWidth + GAP_PX;
   }, []);
 
