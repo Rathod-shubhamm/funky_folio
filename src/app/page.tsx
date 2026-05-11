@@ -134,7 +134,7 @@ export default function Home() {
             <span>LinkedIn</span>
             <span aria-hidden="true">LinkedIn</span>
           </a>
-          <a href="https://drive.google.com/file/d/1wo48W9xWu-rQBMni_WO7nhp1nlKN8_KB/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+          <a href="https://drive.google.com/file/d/1fQXOz1VRL4lXThWAij_WKyUHa8Ltr4Ke/view?usp=sharing" target="_blank" rel="noopener noreferrer">
             <span>Resume</span>
             <span aria-hidden="true">Resume</span>
           </a>
