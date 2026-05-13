@@ -2098,148 +2098,119 @@ canvas {
   }
 
   .site-header {
-    position: static;
+    position: fixed;
+    top: 0;
+    left: var(--site-margin-outer);
+    right: var(--site-margin-outer);
     width: var(--site-content-width);
-    margin: 0 var(--site-margin-outer);
-    padding: 0 calc(var(--content-margin-sm) * 2);
+    padding: 0 var(--content-margin);
+    height: var(--header-height);
+    background: var(--color-secondary);
+    border-top: var(--site-margin-outer) solid #000;
   }
 
   .site-nav {
-    gap: 16px;
-    font-size: clamp(24px, 7vw, 34px);
+    gap: 12px;
+    font-size: var(--text-xs);
   }
 
-  .header-cta,
-  .bottom-border {
+  .header-cta {
     display: none;
   }
 
   .hero-section {
-    padding-top: 0;
+    padding: 0;
+    padding-top: var(--header-height);
+    min-height: 100dvh;
   }
 
   .hero-animation {
-    height: 400px;
+    height: 45vh;
   }
 
   .hero-avatar {
-    right: -12vw;
-    bottom: 32%;
-    width: 112vw;
+    right: -5vw;
+    bottom: 5vh;
+    width: 100vw;
+  }
+
+  .hero-box {
+    padding: var(--site-margin);
+    gap: 12px;
+  }
+
+  .hero-heading h1 {
+    font-size: clamp(80px, 20vw, 120px);
+  }
+
+  .hero-signature {
+    font-size: 24px;
+    gap: 8px;
   }
 
   .hero-box p {
+    font-size: 16px;
     width: 100%;
-    font-size: var(--text-xs);
-  }
-
-  .panel-one {
-    width: 58vw;
-    height: 36vw;
-    right: 6vw;
-  }
-
-  .panel-two {
-    width: 42vw;
-    height: 23vw;
-    right: 45vw;
-  }
-
-  .orbital-one {
-    width: 82vw;
-  }
-
-  .work-section {
-    padding: 28vw 0 22vw;
   }
 
   .section-ghost-title {
-    top: 6vh;
-    font-size: clamp(120px, 36vw, 220px);
+    font-size: 80px;
+    top: 4vh;
   }
 
-  .portfolio-carousel {
-    width: 90vw;
+  .work-section {
+    padding: 12vh 0 10vh;
   }
 
   .portfolio-code {
-    font-size: clamp(92px, 32vw, 180px);
+    font-size: 72px;
+    height: 120px;
   }
 
   .client-text h3 {
-    font-size: clamp(56px, 18vw, 110px);
+    font-size: 42px;
   }
 
-  .project-visual {
-    min-height: 350px;
+  .outline-button {
+    min-height: 48px;
+    font-size: 14px;
   }
 
-  .service-stage {
-    padding-top: 22px;
-  }
-
-  .service-rope {
-    top: 88px;
-  }
-
-  .service-cards {
-    gap: 22px;
-    padding-bottom: 8px;
-    scroll-snap-type: x proximity;
+  .service-header h2 {
+    font-size: 72px;
   }
 
   .service-card {
-    scroll-snap-align: start;
-    width: clamp(280px, 80vw, 320px);
-    min-height: clamp(500px, 60vh, 600px);
+    min-width: 88vw !important;
+    width: 88vw !important;
+    min-height: 700px;
   }
 
   .service-card-panel h3 {
-    font-size: clamp(92px, 24vw, 156px);
-  }
-
-  .service-card-bottom-row {
-    flex-direction: column;
-    align-items: flex-start;
+    font-size: 72px;
   }
 
   .service-card-bottom-row strong {
-    font-size: clamp(40px, 14vw, 72px);
-  }
-
-  .about-section {
-    min-height: 100vh;
-  }
-
-  .about-card {
-    width: 90vw;
+    font-size: 32px;
   }
 
   .about-top h2 {
-    font-size: clamp(82px, 28vw, 150px);
+    font-size: 72px;
   }
 
-  .scoreboard {
-    flex-direction: column;
+  .awards-ticker span {
+    font-size: 32px;
   }
 
-  .awards-ticker {
-    min-height: 92px;
-    border-left: 0;
-    border-top: var(--border-width) solid #000;
-  }
-
-  .contact-section {
-    min-height: auto;
-    padding-top: 30vw;
+  .contact-curve p {
+    font-size: 42px;
+    top: 20%;
   }
 
   .contact-links {
-    align-items: center;
-    margin-top: 2vw;
-    padding: 0 var(--content-margin);
-    font-size: clamp(31px, 9vw, 62px);
-    text-align: center;
+    font-size: 28px;
+    gap: 16px;
+    padding-bottom: 40px;
   }
 }
 
@@ -2439,77 +2410,6 @@ canvas {
   flex-direction: column;
 }
 
-.ops-metrics small {
-  font-size: 12px;
-  color: #666;
-  letter-spacing: 2px;
-  margin-bottom: 24px;
-  font-weight: 800;
-}
-
-.metrics-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-
-.metric-box {
-  display: flex;
-  flex-direction: column;
-}
-
-.m-val {
-  font-family: var(--font-alumni);
-  font-size: clamp(32px, 3vw, 48px);
-  color: #fff;
-  line-height: 1;
-}
-
-.m-lbl {
-  font-size: 10px;
-  color: #888;
-  margin-top: 4px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.ops-visual {
-  position: relative;
-  background: #0a0a0a;
-  overflow: hidden;
-}
-
-/* BLINKCARE VIZ */
-.ops-viz-blinkcare {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, #1a0a00 0%, #050200 100%);
-}
-
-.blink-grid {
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(rgba(255, 69, 0, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 69, 0, 0.08) 1px, transparent 1px);
-  background-size: 40px 40px;
-}
-
-.route-svg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.route-svg path {
-  fill: none;
-  stroke: var(--op-accent);
-  stroke-width: 3;
-  stroke-dasharray: 12;
-  animation: dash 30s linear infinite;
-  filter: drop-shadow(0 0 8px var(--op-accent));
-}
-
 .blink-node {
   fill: var(--op-accent);
   filter: drop-shadow(0 0 12px var(--op-accent));
@@ -2595,109 +2495,322 @@ canvas {
 /* ── MOBILE OPTIMIZATIONS ── */
 @media (max-width: 768px) {
   :root {
-    --site-margin: 20px;
-    --content-margin: 16px;
+    --site-margin-outer: 5px;
+    --border-width: 1.5px;
+    --site-margin: 5vw;
+    --content-margin: 5vw;
+    --header-height: 56px;
   }
+
+  /* ── Header ── */
+  .hide-mobile { display: none !important; }
 
   .site-header {
-    height: 70px;
+    position: fixed;
+    top: 0;
+    left: var(--site-margin-outer);
+    right: var(--site-margin-outer);
+    width: var(--site-content-width);
+    height: var(--header-height);
+    padding: 0 var(--content-margin);
+    background: var(--color-secondary);
+    border-top: var(--site-margin-outer) solid #000;
+    z-index: 1000;
   }
 
+  .header-cta,
+  .bottom-border { display: none; }
+
+  .site-nav { gap: 16px; font-size: clamp(14px, 3.5vw, 18px); }
+
+  /* ── Hero ── */
   .hero-section {
-    padding-top: 100px;
-    padding-bottom: 60px;
-    align-items: center;
-    text-align: center;
-  }
-
-  .hero-text h1 {
-    font-size: clamp(60px, 15vw, 90px);
-    text-align: center;
-  }
-
-  .hero-text .hero-cta {
-    justify-content: center;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
+    height: auto;
+    padding: 0;
+    padding-top: var(--header-height);
+    overflow: visible;
   }
 
   .hero-animation {
-    opacity: 0.4;
+    position: relative;
+    height: 58vw;
+    min-height: 220px;
+    max-height: 300px;
+    border-bottom: var(--border-width) solid #000;
+    overflow: visible;
   }
 
-  /* Work Slider Mobile Layout */
-  .portfolio-card {
-    flex-direction: column !important;
+  /* Avatar: absolutely positioned in .hero-section; use top so it lands in animation zone */
+  .hero-avatar {
+    top: 0;
+    right: -8vw;
+    bottom: auto;
+    width: 100vw;
+    max-height: 300px;
+    object-fit: contain;
+    object-position: right top;
+  }
+
+  .hero-avatar-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    object-position: right top;
+  }
+
+  /* Hide decorative elements that break mobile layout */
+  .orbital, .butterfly, .hero-panel { display: none; }
+
+  .hero-box {
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    background: var(--color-secondary);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+    padding: 24px var(--site-margin) 40px;
+    gap: 14px;
+    flex: 0 0 auto;
+  }
+
+  .hero-heading h1 {
+    font-size: clamp(72px, 19vw, 110px) !important;
+    line-height: 0.82;
+  }
+
+  .hero-signature {
+    font-size: clamp(18px, 5vw, 28px) !important;
+    margin-top: -4px;
+  }
+
+  .hero-box p {
+    font-size: 15px !important;
+    max-width: 100%;
+    text-align: left;
+    margin: 0;
+  }
+
+  .hero-actions { margin-top: 8px; }
+
+  .hero-btn-primary { font-size: 13px; padding: 11px 20px; }
+
+  /* ── Work Section ── */
+  .work-section {
+    padding: 14vw 0 10vw;
+    min-height: 0;
+  }
+
+  .section-ghost-title {
+    font-size: clamp(80px, 22vw, 130px);
+    top: 4vh;
+    right: var(--site-margin);
+  }
+
+  /* WorkSlider cards */
+  .ws-card {
+    flex: 0 0 88vw !important;
     height: auto !important;
-    width: 85vw !important;
+    min-height: 0 !important;
   }
 
-  .portfolio-card-left, 
-  .portfolio-card-right {
+  .ws-track {
+    padding-left: 6vw;
+    padding-right: 6vw;
+  }
+
+  .ws-card-inner {
+    flex-direction: column;
+  }
+
+  .portfolio-card-left {
     width: 100% !important;
   }
 
-  .portfolio-code {
-    height: 100px !important;
-    font-size: 80px !important;
-    justify-content: center;
-  }
-
-  .portfolio-content-block {
-    height: auto !important;
-    min-height: 380px;
-    padding-bottom: 30px;
-  }
-
   .portfolio-card-right {
+    width: 100% !important;
     height: 200px !important;
     border-left: none !important;
     border-top: var(--border-width) solid #000;
   }
 
-  /* Services Mobile */
+  .portfolio-code {
+    height: 100px !important;
+    font-size: 64px !important;
+    padding: 0 20px;
+  }
+
+  .portfolio-content-block {
+    height: auto !important;
+    min-height: 0;
+    padding: 0;
+  }
+
+  .client-text h3 { font-size: 36px !important; }
+
+  .outline-button { min-height: 44px; font-size: 13px; }
+
+  .ws-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  /* ── Services ── */
+  .service-section {
+    padding: clamp(80px, 10vw, 100px) 0 clamp(40px, 6vw, 60px);
+  }
+
+  .service-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .service-header h2 {
+    font-size: clamp(64px, 18vw, 100px);
+  }
+
+  .service-intro { width: 100%; }
+
+  .service-rope,
+  .ops-rope { display: none !important; }
+
+  .service-card-thread,
+  .service-card-knot { display: none !important; }
+
   .service-card {
-    min-width: 85vw !important;
-    width: 85vw !important;
-    height: 700px !important; /* Slightly shorter for mobile screens */
+    min-width: 86vw !important;
+    width: 86vw !important;
+    min-height: 0 !important;
+    padding-top: 16px;
+  }
+
+  .service-card-panel {
+    padding: 24px 20px 20px;
+    min-height: 180px;
   }
 
   .service-card-panel h3 {
-    font-size: 80px !important;
+    font-size: clamp(64px, 18vw, 96px);
   }
 
   .service-card-bottom-row strong {
-    font-size: 38px !important;
+    font-size: clamp(28px, 8vw, 44px);
   }
 
-  /* About Mobile */
-  .about-top {
-    flex-direction: column !important;
-    gap: 30px !important;
+  /* ── Field Ops ── */
+  .field-ops-section {
+    min-height: 0;
+    padding: clamp(80px, 10vw, 120px) 0 clamp(40px, 6vw, 60px);
   }
 
-  .scoreboard {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 15px !important;
+  .ops-header h2 { font-size: clamp(56px, 15vw, 80px); }
+  .ops-intro { font-size: 14px; }
+
+  .ops-card {
+    min-width: 88vw !important;
+    width: 88vw !important;
   }
 
-  .score {
-    padding: 15px !important;
+  .ops-panel {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto 180px auto !important;
+    height: auto !important;
   }
 
-  .score-val {
-    font-size: 40px !important;
+  .ops-details {
+    padding: 20px !important;
+    border-right: none !important;
+    border-bottom: var(--border-width) solid #333;
   }
+
+  .ops-details h3 { font-size: 40px; }
+  .ops-theme { font-size: 13px; }
+
+  .ops-visual {
+    height: 180px !important;
+    border-bottom: var(--border-width) solid #333;
+  }
+
+  .ops-metrics {
+    padding: 20px !important;
+    border-left: none !important;
+    border-top: var(--border-width) solid #333;
+  }
+
+  .metrics-grid {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 16px !important;
+  }
+
+  .metric-box { flex: 1 1 40%; }
+  .m-val { font-size: 28px !important; }
+
+  /* ── About ── */
+  .about-section { min-height: 0; }
 
   .about-card {
-    padding: 30px 20px 0 !important;
-    width: 95vw !important;
+    width: 90vw !important;
+    margin: 0;
   }
 
-  .pitch {
-    width: 250vw !important; /* Scale up background for better mobile fit */
+  .about-top {
+    grid-template-columns: 1fr !important;
+    gap: 24px;
+    padding: 24px;
   }
 
-  /* Footer Mobile */
-  .contact-section h2 {
-    font-size: 80px !important;
+  .about-top h2 {
+    font-size: clamp(72px, 20vw, 110px) !important;
+    line-height: 0.78;
+  }
+
+  .scoreboard { flex-direction: column; }
+
+  .awards-ticker {
+    min-height: 72px;
+    border-left: 0;
+    border-top: var(--border-width) solid #000;
+  }
+
+  .awards-ticker span { font-size: clamp(32px, 9vw, 52px) !important; }
+
+  /* ── Contact ── */
+  .contact-section {
+    min-height: 0;
+    padding-top: 28vw;
+  }
+
+  .contact-curve p {
+    font-size: clamp(36px, 9vw, 60px);
+    top: 14%;
+  }
+
+  .contact-links {
+    align-items: flex-start;
+    margin-top: 4vw;
+    padding: 0 var(--content-margin);
+    font-size: clamp(24px, 6.5vw, 44px);
+  }
+}
+
+/* Extra-small phones (< 380px) */
+@media (max-width: 380px) {
+  .hero-heading h1 { font-size: 68px !important; }
+  .service-header h2 { font-size: 58px !important; }
+  .portfolio-code { font-size: 56px !important; }
+  .service-card-panel h3 { font-size: 58px !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
