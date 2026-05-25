@@ -6,40 +6,42 @@ import { useServicesScrollMotion } from "../hooks/useServicesScrollMotion";
 const ops = [
   {
     id: "BLINKCARE",
-    theme: "On-demand driver services under 15 minutes.",
-    role: "AI Engineer & Tech Consultant",
-    accent: "#ff4500", // Orange/red
+    theme:
+      "On-demand home services — maids, drivers, cleaning — at your door in under 15 minutes.",
+    role: "Tech Advisor",
+    accent: "#ff4500",
     work: [
-      "Translated business requirements into technical workflows",
-      "Coordinated with outsourced development team",
-      "QA testing and feature validation",
-      "Operational workflow optimization",
-      "Product improvement recommendations",
+      "Bridged founder vision with the outsourced dev team",
+      "Translated product requirements into dev-ready specs",
+      "Reviewed app development milestones and architecture",
+      "Led QA cycles, release testing, and feature validation",
+      "Advised on ops workflows and in-app service UX",
     ],
     metrics: [
-      { label: "AVG ARRIVAL", value: "< 15m" },
-      { label: "DEPLOYMENTS", value: "8+" },
-      { label: "EFFICIENCY", value: "+34%" },
-      { label: "CSAT SCORE", value: "4.9/5" },
+      { label: "AVG DISPATCH", value: "< 15m" },
+      { label: "SERVICE LINES", value: "3+" },
+      { label: "RELEASES", value: "8+" },
+      { label: "USER RATING", value: "4.9/5" },
     ],
   },
   {
     id: "GETZONED",
-    theme: "AI-powered location & mapping intelligence.",
-    role: "AI Systems & Product Engineering",
-    accent: "#00ff88", // Blue/green
+    theme:
+      "Hyperlocal social connectivity — meet, date, or join events within a 500-meter radius.",
+    role: "Tech Advisor",
+    accent: "#00ff88",
     work: [
-      "AI workflow design",
-      "Automation systems",
-      "Location intelligence architecture",
-      "Product system planning",
-      "UX and operational improvements",
+      "InstaDate-style proximity matching within 500m",
+      "Host or join nearby events from the same feed",
+      "Location-aware discovery and radius logic",
+      "Reviewed mobile flows, APIs, and release testing",
+      "Advised on product scope between dating and events",
     ],
     metrics: [
-      { label: "MAP SECTORS", value: "12K" },
-      { label: "LATENCY", value: "120ms" },
-      { label: "DATA NODES", value: "1.4M" },
-      { label: "ACCURACY", value: "99.8%" },
+      { label: "RADIUS", value: "500m" },
+      { label: "MODES", value: "MEET+" },
+      { label: "EVENTS", value: "HOST" },
+      { label: "FEED", value: "LIVE" },
     ],
   },
 ];
@@ -151,7 +153,8 @@ export default function FieldOpsSection() {
       <div className="ops-header">
         <h2>FIELD OPS</h2>
         <p className="ops-intro">
-          Real-world deployments and advisory work where AI meets operational systems.
+          Product advisory on live platforms — from hyperlocal home services to
+          proximity-based social and events.
         </p>
       </div>
 
@@ -195,35 +198,54 @@ export default function FieldOpsSection() {
                   {op.id === "BLINKCARE" && (
                     <div className="ops-viz-blinkcare">
                       <div className="blink-grid" />
-                      <div className="blink-route">
-                        <svg viewBox="0 0 200 200" className="route-svg">
-                          <path d="M 20 180 L 80 120 L 150 140 L 180 40" />
-                          <circle cx="180" cy="40" r="6" className="blink-node pulse" />
-                          <circle cx="20" cy="180" r="6" className="blink-node" />
-                        </svg>
+                      <div className="blink-eta-ring" />
+                      <div className="blink-home-hub">
+                        <span className="blink-home-icon" />
                       </div>
-                      <div className="blink-ui">
-                        <div className="ui-header" />
-                        <div className="ui-body">
-                          <span className="ui-pulse" />
+                      <div className="blink-services">
+                        <div className="blink-service blink-service--maid" data-label="MAID">
+                          <span className="blink-service-icon" />
                         </div>
+                        <div className="blink-service blink-service--driver" data-label="DRIVER">
+                          <span className="blink-service-icon" />
+                        </div>
+                        <div className="blink-service blink-service--clean" data-label="CLEAN">
+                          <span className="blink-service-icon" />
+                        </div>
+                      </div>
+                      <div className="blink-eta-badge">
+                        <span className="blink-eta-num">15</span>
+                        <span className="blink-eta-unit">MIN</span>
+                      </div>
+                      <div className="blink-dispatch-bar">
+                        <span className="blink-dispatch-fill" />
                       </div>
                     </div>
                   )}
                   {op.id === "GETZONED" && (
                     <div className="ops-viz-getzoned">
                       <div className="zoned-grid" />
-                      <div className="zoned-sectors">
-                        <div className="sector s1" />
-                        <div className="sector s2" />
-                        <div className="sector s3" />
+                      <div className="zoned-radar">
+                        <span className="zoned-ring zoned-ring--outer" />
+                        <span className="zoned-ring zoned-ring--mid" />
+                        <span className="zoned-ring zoned-ring--inner" />
+                        <span className="zoned-ring zoned-ring--core" />
                       </div>
-                      <div className="zoned-overlay">
-                        <svg viewBox="0 0 200 200">
-                          <polygon points="100,20 180,80 180,160 100,190 20,160 20,80" className="geo-poly" />
-                          <circle cx="100" cy="105" r="4" className="geo-node pulse-fast" />
-                        </svg>
+                      <div className="zoned-peers">
+                        <span className="zoned-peer zoned-peer--1" />
+                        <span className="zoned-peer zoned-peer--2" />
+                        <span className="zoned-peer zoned-peer--3" />
+                        <span className="zoned-peer zoned-peer--4" />
                       </div>
+                      <div className="zoned-links" aria-hidden="true">
+                        <span className="zoned-link zoned-link--a" />
+                        <span className="zoned-link zoned-link--b" />
+                      </div>
+                      <div className="zoned-event-pin">
+                        <span className="zoned-event-dot" />
+                        <span className="zoned-event-label">EVENT</span>
+                      </div>
+                      <div className="zoned-radius-label">500m</div>
                     </div>
                   )}
                 </div>
